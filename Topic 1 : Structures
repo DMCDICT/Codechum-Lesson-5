@@ -1,0 +1,197 @@
+ITEM 1 : First Day of Class
+
+using System;
+
+public struct Student
+{
+    public string name;
+    public int age;
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Student student;
+
+        Console.Write("Enter the name of the student: ");
+        student.name = Console.ReadLine();
+
+        Console.Write("Enter the age of the student: ");
+        student.age = Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine("Name: " + student.name);
+        Console.WriteLine("Age: " + student.age);
+    }
+}
+
+ITEM 2 : Learning your Languages
+
+using System;
+
+public struct ProgrammingLanguage
+{
+    public string name;
+    public string extension;
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        ProgrammingLanguage language1;
+        language1.name = "C";
+        language1.extension = ".c";
+
+        ProgrammingLanguage language2;
+        language2.name = "C++";
+        language2.extension = ".cpp";
+    }
+}
+
+ITEM 3 : Saving Up
+
+using System;
+
+public struct SavingsBank
+{
+    public int bills;
+    public int coins;
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        SavingsBank savings;
+        savings.bills = 0;
+        savings.coins = 0;
+
+        Console.Write("Enter the number of values: ");
+        int n = Convert.ToInt32(Console.ReadLine());
+
+        for (int i = 1; i <= n; i++)
+        {
+            Console.Write("Enter value " + i + ": ");
+            int value = Convert.ToInt32(Console.ReadLine());
+
+            if (i % 2 != 0)
+            {
+                savings.bills += value;
+            }
+            else
+            {
+                savings.coins += value;
+            }
+        }
+
+        Console.WriteLine("Savings: " + savings.bills + " bills and " + savings.coins + " coins");
+    }
+}
+
+ITEM 4 : My Book Collection
+
+using System;
+
+public struct Book
+{
+    public int numberOfPages;
+    public string title;
+    public string author;
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Book book;
+
+        Console.Write("Enter the number of pages: ");
+        book.numberOfPages = Convert.ToInt32(Console.ReadLine());
+
+        Console.Write("Enter the title: ");
+        book.title = Console.ReadLine();
+
+        Console.Write("Enter the author: ");
+        book.author = Console.ReadLine();
+
+        Console.WriteLine("Title: " + book.title);
+        Console.WriteLine("Author: " + book.author);
+        Console.WriteLine("Number of pages: " + book.numberOfPages);
+    }
+}
+
+ITEM 5 : Opening an Account
+
+using System;
+
+public struct Person
+{
+    public string name;
+}
+
+public struct BankAccount
+{
+    public double balance;
+    public Person accountHolder;
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Person p;
+
+        Console.Write("Enter a name: ");
+        p.name = Console.ReadLine();
+
+        BankAccount account;
+        account.balance = 1000;
+        account.accountHolder = p;
+    }
+}
+
+ITEM 6 : I Only Want a Proper Date
+
+using System;
+
+public struct Date
+{
+    public int month;
+    public int day;
+    public int year;
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Date date;
+
+        while (true)
+        {
+            Console.Write("Enter the year: ");
+            date.year = Convert.ToInt32(Console.ReadLine());
+            if (date.year > 0) break;
+            else Console.WriteLine("Error: Year must be greater than 0!");
+        }
+
+        while (true)
+        {
+            Console.Write("Enter the month: ");
+            date.month = Convert.ToInt32(Console.ReadLine());
+            if (date.month >= 1 && date.month <= 12) break;
+            else Console.WriteLine("Error: Month must be between 1 and 12!");
+        }
+
+        while (true)
+        {
+            Console.Write("Enter the day: ");
+            date.day = Convert.ToInt32(Console.ReadLine());
+            if (date.day >= 1 && date.day <= 31) break;
+            else Console.WriteLine("Error: Day must be between 1 and 31!");
+        }
+
+        Console.WriteLine(date.month + "/" + date.day + "/" + date.year);
+    }
+}
