@@ -1,0 +1,270 @@
+ITEM 1 : Self-Introduction
+
+using System;
+
+public struct Person
+{
+    public string name;
+    public int age;
+    public char gender;
+}
+
+public class Program
+{
+    public static void Main()
+    {
+        Person p = new Person();
+
+        Console.Write("Enter name: ");
+        p.name = Console.ReadLine();
+
+        Console.Write("Enter age: ");
+        p.age = Convert.ToInt32(Console.ReadLine());
+
+        Console.Write("Enter gender: ");
+        p.gender = Convert.ToChar(Console.ReadLine());
+
+        displayPerson(p);
+    }
+
+    public static void displayPerson(Person p)
+    {
+        string genderStr = p.gender == 'M' ? "male" : "female";
+        Console.WriteLine($"{p.name}, {p.age} years old and is a {genderStr}");
+    }
+}
+
+ITEM 2 : First Coding Program
+
+using System;
+
+public struct SourceCode
+{
+    public string name;
+    public string extension;
+}
+
+public class Program
+{
+    public static void Main()
+    {
+        Console.Write("Enter file name: ");
+        string name = Console.ReadLine();
+
+        Console.Write("Enter file extension: ");
+        string extension = Console.ReadLine();
+
+        SourceCode sc = createSourceCode(name, extension);
+
+        Console.WriteLine($"{sc.name}.{sc.extension}");
+    }
+
+    public static SourceCode createSourceCode(string name, string extension)
+    {
+        SourceCode sc;
+        sc.name = name;
+        sc.extension = extension;
+        return sc;
+    }
+}
+
+ITEM 3 : Evaluating Dates
+
+using System;
+
+public struct Date
+{
+    public int month;
+    public int day;
+    public int year;
+}
+
+public class Program
+{
+    public static void Main()
+    {
+        Date d1 = new Date();
+        Date d2 = new Date();
+
+        d1 = GetDateInput("d1");
+        d2 = GetDateInput("d2");
+
+        Console.WriteLine(compareDates(d1, d2));
+    }
+
+    public static Date GetDateInput(string dateName)
+    {
+        Date date = new Date();
+
+        do
+        {
+            Console.Write($"Enter the year for {dateName}: ");
+            date.year = Convert.ToInt32(Console.ReadLine());
+            if (date.year <= 0)
+            {
+                Console.WriteLine("Error: invalid year");
+            }
+        } while (date.year <= 0);
+
+        do
+        {
+            Console.Write($"Enter the day for {dateName}: ");
+            date.day = Convert.ToInt32(Console.ReadLine());
+            if (date.day < 1 || date.day > 31)
+            {
+                Console.WriteLine("Error: invalid day");
+            }
+        } while (date.day < 1 || date.day > 31);
+
+        do
+        {
+            Console.Write($"Enter the month for {dateName}: ");
+            date.month = Convert.ToInt32(Console.ReadLine());
+            if (date.month < 1 || date.month > 12)
+            {
+                Console.WriteLine("Error: invalid month");
+            }
+        } while (date.month < 1 || date.month > 12);
+
+        return date;
+    }
+
+    public static int compareDates(Date a, Date b)
+    {
+        if (a.year != b.year)
+            return a.year < b.year ? -1 : 1;
+
+        if (a.month != b.month)
+            return a.month < b.month ? -1 : 1;
+
+        if (a.day != b.day)
+            return a.day < b.day ? -1 : 1;
+
+        return 0;
+    }
+}
+
+ITEM 4 : Library Records
+
+using System;
+
+public struct Book
+{
+    public int numberOfPages;
+    public string title;
+    public string author;
+}
+
+public class Program
+{
+    public static void Main()
+    {
+        Book book = new Book();
+
+        Console.Write("Enter the number of pages: ");
+        book.numberOfPages = Convert.ToInt32(Console.ReadLine());
+
+        Console.Write("Enter the title: ");
+        book.title = Console.ReadLine();
+
+        Console.Write("Enter the author: ");
+        book.author = Console.ReadLine();
+
+        displayBook(book);
+    }
+
+    public static void displayBook(Book book)
+    {
+        for (int i = 0; i < book.numberOfPages; i++)
+        {
+            Console.WriteLine($"{book.title} by {book.author} ({book.numberOfPages} pages)");
+        }
+    }
+}
+
+ITEM 5 : Opening an Account with Initial Deposit
+
+using System;
+
+public struct Person
+{
+    public string name;
+}
+
+public struct BankAccount
+{
+    public double balance;
+    public Person accountHolder;
+}
+
+public class Program
+{
+    public static void Main()
+    {
+        Person p = new Person();
+
+        Console.Write("Enter name: ");
+        p.name = Console.ReadLine();
+
+        Console.Write("Enter initial balance: ");
+        double initialBalance = Convert.ToDouble(Console.ReadLine());
+
+        BankAccount account = openBankAccount(p, initialBalance);
+
+        Console.WriteLine($"Account Holder: {account.accountHolder.name}");
+        Console.WriteLine($"Balance: {account.balance:F2}");
+    }
+
+    public static BankAccount openBankAccount(Person p, double initialBalance)
+    {
+        BankAccount account;
+        account.accountHolder = p;
+        account.balance = initialBalance;
+        return account;
+    }
+}
+
+ITEM 6 : Counting Savings
+
+using System;
+
+public struct SavingsBank
+{
+    public int bills;
+    public int coins;
+}
+
+public class Program
+{
+    public static void Main()
+    {
+        SavingsBank savings = new SavingsBank();
+        savings.bills = 0;
+        savings.coins = 0;
+
+        Console.Write("Enter the number of values: ");
+        int n = Convert.ToInt32(Console.ReadLine());
+
+        for (int i = 0; i < n; i++)
+        {
+            Console.Write($"Enter value {i + 1}: ");
+            int value = Convert.ToInt32(Console.ReadLine());
+
+            if (i % 2 == 0)
+            {
+                savings.bills += value;
+            }
+            else
+            {
+                savings.coins += value;
+            }
+        }
+
+        Console.WriteLine($"Total Savings: {getTotal(savings):F2}");
+    }
+
+    public static double getTotal(SavingsBank savings)
+    {
+        return savings.bills * 100 + savings.coins;
+    }
+}
